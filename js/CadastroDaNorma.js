@@ -2,7 +2,6 @@
 window.onload = function() {
     
     if (getWKNumState() == 0) {
-        hoje('dateEmi');
         idSeq();
     }
 };
@@ -48,3 +47,27 @@ function idSeq() {
 
     $('#codeId').val('Nor-'+lengthDataset);
 }
+
+$(document).on('change', "#idenCod",
+    function normaCode() {
+        var prefix = $('#typeDoc').val();
+        var number = $('#idenCod').val();
+
+        $('#idenCod').val(prefix+' '+number);
+    }
+);
+
+$(document).on('change', "#typeDoc",
+    function prefixCode() {
+
+        var prefix = $('#typeDoc').val();
+        var number = $('#idenCod').val();
+
+        if (number != "") {
+
+            number = number.replace(/[^0-9]+/, '');
+
+            $('#idenCod').val(prefix+' '+number);
+        }
+    }
+);
